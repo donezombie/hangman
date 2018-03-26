@@ -1,0 +1,16 @@
+html,
+body{
+  height: 100%;
+  min-height: 100%;
+}
+.bg-back{
+  background-image: url('./image/note.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: 1;
+}
+.bg-front{
+  background-color: rgb(19, 20, 19);
+  opacity: 0.8;
+  background-attachment: fixed;
+}

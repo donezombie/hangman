@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link rel="stylesheet" href="./static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel=”stylesheet” href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+  </head>
+  <body class="bg-back">
+    <div id="general" class="container-fluid">
+      <!-- <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+          <p class="font-weight-bold" style="font-size:30px">WELCOME TO HANGMAN GAME</p>
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="container">
+          <div class="">
+            <button class="btn btn-dark" type="button" id="btn_NewGame" name="btn_NewGame">New Game</button>
+            <button class="btn btn-dark" type="button" id="btn_AddQuestion" name="btn_AddQuestion" style="display:none;">Add Question</button>
+            <div id="inputQA" style="display:none;">
+              <table id="tableAdd" class="table ml-5" style="border:0;">
+                <tr>
+                  <th id="spanQuestion" style="width:20%;">New Question: </th>
+                  <td> <input id="newQues" type="text" name="" value=""> </td>
+                </tr>
+                <tr>
+                  <th id="spanAnswer" style="width:20%;">Q's Answer: </th>
+                  <td> <input id="AnsQues" type="text" name="" value=""> </td>
+                  <td id="validate" class="font-italic" style="color: red; display:none;">*Không để trống 1 trong 2 ô</td>
+                </tr>
+                <tr>
+                  <td><button class="btn btn-dark" id="submitAdd" type="button" name="button">Submit</button></td>
+                  <td><button class="btn btn-dark" id="cancel" type="button" name="button">Cancel</button></td>
+                  <td id="addsuccessful" class="font-italic" style="color: red; display:none;">*Thêm Thành công</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- Show Question -->
+          <div id="hint" class="text-center">
+              <span id="question" class="text-dark font-weight-bold">Question: </span><p id="questionShow"></p>
+          </div>
+        </div>
+      </div>
+      <!-- ImgHangMan -->
+      <div class="row">
+        <div class="col-md-8 offset-md-2 d-flex justify-content-center">
+          <img id="hangman" class="mb-5" src="./static/hangman/hangman-0.png" alt="">
+        </div>
+      </div>
+      <!--Show Answer-->
+      <div class="row">
+        <div class="col-md-8 offset-md-2 text-center">
+           <p id="showAnswer" class="font-weight-bold" style="font-size:200%">_ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
+        </div>
+      </div>
+
+      <!--Keyboard-->
+      <div class="row mt-1">
+        <div class="col-md-8 offset-md-2">
+            <div id="keyboard">
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">A</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">B</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">C</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">D</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">E</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">F</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">G</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">H</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">I</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">J</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">K</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">L</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">M</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">N</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">O</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">P</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">Q</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">R</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">S</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">T</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">U</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">V</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">W</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">X</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">Y</button></li>
+                  <button  class="btn btn-dark m-2 choosealpha" type="button" name="button" style="width:5%">Z</button></li>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./static/main.js">
+    </script>
+  </body>
+</html>
